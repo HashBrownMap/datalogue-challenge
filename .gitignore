@@ -1,0 +1,8 @@
+# exclude ipynb_checkpoints
+.ipynb_checkpoints/
+
+# exclude vscode metadata
+.vscode/
+
+# exclude compiled python files
+*.pyc
