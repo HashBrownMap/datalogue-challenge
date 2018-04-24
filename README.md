@@ -57,7 +57,7 @@ The results below all used Word2Vec embeddings.
 | -------- | :---------- :|
 | Logistic Regression | 0.750 |
 | Linear SVM | 0.750 |
-| CNN with original dataset| 0.875 |
+| CNN with original dataset | 0.875 |
 | CNN with extended dataset | 0.986 |
 
 
