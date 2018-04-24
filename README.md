@@ -51,6 +51,14 @@ After data augmentation, validation would increase but it's actually misleading 
 
 It's misleading due to our approach in generating more data. For the small dataset we had, we identified words with more weight in each class and used their synonyms to create new data. However there were a few samples which didn't contain those words. Thus no new samples were generated using those respective samples. So our model would overfit on the samples that were used to generate data and newly generated data. Our validation set would also include mostly new data. This resulted in such high validation accuracy.  
 
+The results below all used Word2Vec embeddings.  
+| | Accuracy | 
+|----|----|
+| Logistic Regression | 0.750 |
+| Linear SVM | 0.750 |
+| CNN with original dataset| 0.875|
+| CNN with extended dataset | 0.986 |
+
 
 Future Work
 ------------
