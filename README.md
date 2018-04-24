@@ -43,11 +43,11 @@ Results
 
 With the original data, the baseline models performed poorly. After running a truncated SVD, we see that the words weight of each class are still cluster together in TFIDF compared to a Word2Vector embedding. The CNN also performed badly under the original data. It would overfit on the training data and perform badly on the validation data.    
 
-![alt text](https://github.com/HashBrownMap/datalogue-challenge/original_history.png)
+![alt text](https://github.com/HashBrownMap/datalogue-challenge/blob/master/original_history.png)
 
 After data augmentation, validation would increase but it's actually misleading us.   
 
-![alt text](https://github.com/HashBrownMap/datalogue-challenge/history.png)
+![alt text](https://github.com/HashBrownMap/datalogue-challenge/blob/master/history.png)
 
 It's misleading due to our approach in generating more data. For the small dataset we had, we identified words with more weight in each class and used their synonyms to create new data. However there were a few samples which didn't contain those words. Thus no new samples were generated using those respective samples. So our model would overfit on the samples that were used to generate data and newly generated data. Our validation set would also include mostly new data. This resulted in such high validation accuracy.  
 
