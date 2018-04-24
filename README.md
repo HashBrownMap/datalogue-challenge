@@ -54,7 +54,7 @@ It's misleading due to our approach in generating more data. For the small datas
 The results below all used Word2Vec embeddings.    
 
 | Models | Accuracy | 
-|--------|----------|
+| -------- | :---------- :|
 | Logistic Regression | 0.750 |
 | Linear SVM | 0.750 |
 | CNN with original dataset| 0.875|
