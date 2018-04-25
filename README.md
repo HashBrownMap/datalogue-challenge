@@ -82,7 +82,7 @@ Logistic Regression             |  Linear SVM           | CNN
 :-------------------------:|:-------------------------: | :------------------:
 ![oops figure not showing](https://github.com/HashBrownMap/datalogue-challenge/blob/master/models/lr_additional_cmatrix.png)  |  ![oops figure not showing](https://github.com/HashBrownMap/datalogue-challenge/blob/master/models/svm_additional_cmatrix.png) | ![oops figure not showing](https://github.com/HashBrownMap/datalogue-challenge/blob/master/cnn_additional_cmatrix.png)
 
-It is too note that Linear SVM had the least false negative(Type II). This is the most crucial in our situation as we want to seek help immediately if the messaged is flagged. However it is to note that the validation dataset was far too small to be able to make the conclusion that the SVM model is a better performer.
+It is to note that the Linear SVM model had the least false negatives(Type II). This is the most crucial in our situation as we want to seek help immediately if the messaged is flagged. However it is to note that the validation dataset was far too small to be able to make the conclusion that the SVM model is a better performer.
 
 Future Work
 ------------
