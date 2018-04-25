@@ -11,9 +11,6 @@ How To Run
 2. To execute, run   
     ```python play.py```.
 
-Method
-------------
-
 Data Processing
 ------------
 
