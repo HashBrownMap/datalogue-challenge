@@ -9,7 +9,7 @@ How To Run
 1. Install dependencies  
 ```pip install -r requirements.txt```
 2. To execute, run   
-    ```python play.py```.
+    ```python run.py```.
 
 Data Processing
 ------------
