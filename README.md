@@ -91,4 +91,4 @@ Given more time, here are some possible expansion:
 * Perhaps crawl Twitter and get more data related to depression.
 * With more data and time, implement a Recurrent Neural Network model. 
 * cross-validate hyperparameters
-* Perhaps improve the accuracy of pre-trained word embeddings for this [paper](https://arxiv.org/pdf/1711.08609.pdf). Popular word embeddings methods such as Word2Vec and Glove currently ignore sentiment information of texts. The paper suggests a new method, Improved Word Vectors, which claims to be more effective for sentiment analysis.
+* Perhaps improve the accuracy of pre-trained word embeddings following this [paper](https://arxiv.org/pdf/1711.08609.pdf). Popular word embeddings methods such as Word2Vec and Glove currently ignore sentiment information of texts. The paper suggests a new method, Improved Word Vectors, which claims to be more effective for sentiment analysis.
