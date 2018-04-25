@@ -7,8 +7,11 @@ from models.cnn import ConvNet
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from keras.utils import to_categorical
-from metrics.get_metrics import get_metrics, plot_acc_loss
+from sklearn.metrics import confusion_matrix
+from metrics.get_metrics import get_metrics, plot_acc_loss, plot_confusion_matrix, onehot2label
 
+from sklearn import metrics
+from sklearn.metrics import roc_auc_score
 import gensim
 
 #word2vec_path = "./embeddings/GoogleNews-vectors-negative300.bin.gz"
@@ -16,7 +19,7 @@ import gensim
 
 print("word2vec loaded")
 
-data = pd.read_pickle('./data/processeddata.pickle')
+data = pd.read_pickle('./data/newprocesseddata.pickle')
 
 all_words = [word for tokens in data["tokens"] for word in tokens]
 sentence_lengths = [len(tokens) for tokens in data["tokens"]]
@@ -50,20 +53,20 @@ num_validation_samples = int(VALIDATION_SPLIT * cnn_data.shape[0])
 
 
 
-embedding_weights = np.load('./data/embeddings_original_weights.npy')
-#embedding_weights = np.load('./data/embeddings_weights.npy')
+#embedding_weights = np.load('./data/embeddings_original_weights.npy')
+embedding_weights = np.load('./data/embeddings_weights.npy')
 
 print("embeddings done")
 
-x_train = cnn_data[:-num_validation_samples]
-y_train = labels[:-num_validation_samples]
-x_val = cnn_data[-num_validation_samples:]
-y_val = labels[-num_validation_samples:]
+#x_train = cnn_data[:-num_validation_samples]
+#y_train = labels[:-num_validation_samples]
+#x_val = cnn_data[-num_validation_samples:]
+#y_val = labels[-num_validation_samples:]
 
-x_train = np.load('./data/X_train_original.npy')
-y_train = np.load('./data/Y_train_original.npy')
-x_val = np.load('./data/X_val_original.npy')
-y_val = np.load('./data/Y_val_original.npy')
+x_train = np.load('./data/X_train_additional.npy')
+y_train = np.load('./data/Y_train_additional.npy')
+x_val = np.load('./data/X_val_additional.npy')
+y_val = np.load('./data/Y_val_additional.npy')
 
 model = ConvNet(embedding_weights, MAX_SEQUENCE_LENGTH, len(word_index)+1, EMBEDDING_DIM, 
                 2)
@@ -73,8 +76,20 @@ history = model.fit(x_train, y_train, validation_data=(x_val, y_val), epochs=30,
 
 
 predictions = model.predict(x_val)
+preds = onehot2label(predictions)
+labels= onehot2label(y_val)
 
+cnf_matrix = confusion_matrix(labels, preds)
+
+plot_confusion_matrix(cnf_matrix, classes=['not_flagged', 'flagged'],
+                      title='Confusion matrix, without normalization')
+
+plt.savefig("cnn_additional_cmatrix.png")
 
 plot_acc_loss("original validation", [history.history], 'val_acc', 'val_loss' )
 
-plt.savefig("original_history.png")
+plt.savefig("additional_history.png")
+
+print("Classification report for classifier %s:\n%s\n"
+      % (model, metrics.classification_report(labels, preds)))
+print("ROC: %s" % roc_auc_score(labels, preds) )

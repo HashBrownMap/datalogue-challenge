@@ -7,7 +7,7 @@ from keras.models import Model
 from keras import optimizers
 
 
-def ConvNet(embeddings, max_sequence_length, num_words, embedding_dim, labels_index=2, learning_rate=0.001, dropout=0.5, trainable=False):
+def ConvNet(embeddings, max_sequence_length, num_words, embedding_dim, labels_index=2, learn_rate=0.001, dropout=0.5, trainable=True):
     
     embedding_layer = Embedding(num_words,
                             embedding_dim,
@@ -36,7 +36,7 @@ def ConvNet(embeddings, max_sequence_length, num_words, embedding_dim, labels_in
     preds = Dense(labels_index, activation='softmax')(x)
 
     model = Model(sequence_input, preds)
-    optimizer = optimizers.Adam(lr=learning_rate)
+    optimizer = optimizers.Adam(lr=learn_rate)
 
     model.compile(loss='categorical_crossentropy',
                   optimizer=optimizer,
